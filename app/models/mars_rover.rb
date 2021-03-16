@@ -1,0 +1,4 @@
+class MarsRover < ApplicationRecord
+
+
+end

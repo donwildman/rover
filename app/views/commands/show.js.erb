@@ -1,0 +1,24 @@
+var _dest_x = "<%= @commands[:x] %>";
+var _dest_y = "<%= @commands[:y] %>";
+var _ok = true;
+
+$('.mars-rover').each(function(){
+  var _rover_id = $(this).data("roverId");
+  if(_rover_id != "<%= @rover_id %>"){
+     var _current_x = $(this).data("x");
+    var _current_y = $(this).data("y");
+    if(_dest_x == _current_x && _dest_y == _current_y){
+        _ok = false;
+        alert('Aborting command, that grid space is occupied!');
+    }
+  }
+});
+
+if(_ok){
+      $("#rover_<%= @rover_id %>_status").html("<%= j render(partial: 'rover', locals: {commands: @commands}) %>");
+      $('#hidden_x_<%= @rover_id %>').val("<%= @commands[:x] %>");
+      $('#hidden_y_<%= @rover_id %>').val("<%= @commands[:y] %>");
+      $('#hidden_direction_<%= @rover_id %>').val("<%= @commands[:direction] %>");
+  }
+$('.command-input').val('');
+

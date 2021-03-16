@@ -1,0 +1,31 @@
+<div class="container">
+    <% _rovers = 1 %>
+    <% while _rovers <= @rover_count  %>
+      <div class="row">
+        <div class="col-sm-6">
+
+          <h3>Rover <%= _rovers %> Command</h3>
+          <%= form_with url: "/commands/show", local: false do |f| %>
+            <input type="hidden" name="rover_id" value="<%= _rovers %>"/>
+            <input type="hidden" name="X" value="<%= @commands[:x] %>" id="hidden_x_<%= _rovers %>"/>
+            <input type="hidden" name="Y" value="<%= @commands[:y] %>" id="hidden_y_<%= _rovers %>"/>
+            <input type="hidden" name="direction" value="<%= @commands[:direction] %>" id="hidden_direction_<%= _rovers %>"/>
+            <%= f.label :command, "Command:" %>
+            <%= f.text_field :command, class: "command-input" %>
+            <%= f.submit "Go" %>
+          <% end %>
+
+        </div>
+        <div class="col-sm-6">
+          <h3>Rover <%= _rovers %> Status</h3>
+          <div id="rover_<%= _rovers %>_status">
+            <div class="mars-rover" data-rover-id="<%= _rovers %>" data-x="<%= @commands[:x] %>" data-y="<%=  @commands[:y] %>" ><%= @commands[:x] %> <%=  @commands[:y] %> <%= @commands[:direction] %></div>
+          </div>
+
+        </div>
+      </div>
+      <% _rovers += 1 %>
+    <% end %>
+
+
+</div>

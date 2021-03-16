@@ -1,0 +1,5 @@
+<% if @commands[:error].nil? %>
+  <div class="mars-rover" data-rover-id="<%= @rover_id %>" data-x="<%= @commands[:x] %>" data-y="<%=  @commands[:y] %>" ><%= @commands[:x] %> <%=  @commands[:y] %> <%= @commands[:direction] %></div>
+<% else %>
+<span class="text-danger"><%= @commands[:error] %></span> Please send an empty command to print status.
+<% end %>
