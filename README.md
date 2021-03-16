@@ -10,6 +10,7 @@ rails s
 
 Requirements:
 Ruby 2.6.3
+Yarn
 
 Comments:
 It was not necessary to use the rails stack for this project, but it was the most familiar for me.
